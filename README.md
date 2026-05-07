@@ -60,7 +60,7 @@ Or build from source (see below)
 - **Architecture:** MVVM + Repository Pattern
 - **Database:** Room (SQLite)
 - **Design:** Material 3 / Material You
-- **PDF Rendering:** Android Pdfium (built-in)
+- **PDF Rendering:** PdfiumAndroid
 
 ---
 
