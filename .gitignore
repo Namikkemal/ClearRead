@@ -36,3 +36,16 @@ captures/
 
 # Signing files
 signing.properties
+
+# Dev artifacts & scratch
+scratch/
+*.artifact.md
+translate_strings.py
+test_compose.kt
+
+# OS metadata
+desktop.ini
+Thumbs.db
+
+# Kotlin compiler cache
+.kotlin/
