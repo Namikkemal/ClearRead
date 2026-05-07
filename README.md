@@ -112,7 +112,6 @@ ClearRead collects **zero data**.
 - ❌ No internet permission
 - ✅ All files stay on your device
 
-Read the full [Privacy Policy](PRIVACYPOLICYLINK).
 
 ---
 
