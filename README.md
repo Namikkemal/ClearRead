@@ -73,6 +73,20 @@ ClearRead is built with modern Android development standards, focusing strictly 
 
 ---
 
+## 🐛 Found a Bug? (Reporting Issues)
+
+I want to make ClearRead the best it can be. If you encounter a crash, a rendering issue, or have a feature idea, please let me know! 
+
+To help me fix it faster, please include:
+1. **Device Model:** (e.g., Samsung S24 Ultra)
+2. **Android Version:** (e.g., Android 14)
+3. **The Issue:** What happened? What did you expect to happen?
+4. **Steps to Reproduce:** How can I see the bug myself?
+
+👉 **[Open an Issue](https://github.com/Namikkemal/clearread/issues/new)**
+
+---
+
 ## 🔧 Build from Source
 
 ```bash()
