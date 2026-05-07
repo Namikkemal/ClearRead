@@ -52,6 +52,17 @@ So, I decided to build what should have existed from the start: **a PDF reader t
 
 ---
 
+## 🌍 Privacy Pledge
+
+ClearRead collects **zero data**. This is not a feature; it's my fundamental guarantee to you.
+
+*   ❌ No analytics or crash reporting
+*   ❌ Zero ad networks or third-party trackers
+*   ❌ No internet permission needed (runs completely offline)
+✅ **All your files and settings are handled exclusively on your device storage.**
+
+---
+
 ## 📥 Download & Get Started
 
 <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="80">
@@ -63,13 +74,20 @@ So, I decided to build what should have existed from the start: **a PDF reader t
 
 ## 🔬 Technical Architecture & Philosophy
 
-ClearRead is built with modern Android development standards, focusing strictly on maintainability and performance. We prioritize reliability over complexity:
+ClearRead is built with modern Android development standards, focusing strictly on maintainability and performance.
 
 *   **Language:** Kotlin
 *   **UI:** Jetpack Compose — Chosen for its declarative nature, which minimizes boilerplate and ensures fluid rendering even on budget devices.
 *   **Architecture:** MVVM + Repository Pattern — Ensures a Single Source of Truth (SSOT), keeping business logic isolated and testable.
 *   **Database:** Room (SQLite) — A secure, local-only database for all user data. **Your private settings never leave your phone.**
 *   **PDF Rendering:** AndroidPdfViewer (Pdfium) & PDFBox — Selected specifically for their industry-leading low memory footprint when handling large documents efficiently.
+
+---
+
+**Requirements:**
+*   Android Studio Ladybug or later
+*   JDK 17+
+*   Android SDK 26+ (supports Android 8.0 Oreo and above)
 
 ---
 
@@ -87,23 +105,26 @@ To help me fix it faster, please include:
 
 ---
 
-## 🔧 Build from Source
+### ⚙️ Build from Source Instructions
 
-```bash()
-# Clone the repository
-git clone https://github.com/Namikkemal/clearread.git
+To compile ClearRead on your local machine, follow these steps using a command-line interface (Terminal/Command Prompt):
 
-# Open in Android Studio and navigate to the project folder
-cd clearread
-
-# Run a clean build for release APK
-./gradlew assembleRelease 
-
-# The finished APK will be at: app/build/outputs/apk/release/
-
+1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/Namikkemal/clearread.git
+    ```
+2.  **Enter Directory:**
+    ```bash
+    cd clearread
+    ```
+3.  **Run the Build Command:** This command compiles a release-ready APK file.
+    ```bash
+    ./gradlew assembleRelease 
+    ```
+4.  **Locate Output:** The finished APK will be found here: `app/build/outputs/apk/release/`
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
