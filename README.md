@@ -113,15 +113,14 @@ To compile ClearRead on your local machine, follow these steps using a command-l
     ```bash
     git clone https://github.com/Namikkemal/clearread.git
     ```
-2.  **Enter Directory:**
-    ```bash
-    cd clearread
-    ```
-3.  **Run the Build Command:** This command compiles a release-ready APK file.
-    ```bash
-    ./gradlew assembleRelease 
-    ```
-4.  **Locate Output:** The finished APK will be found here: `app/build/outputs/apk/release/`
+2.  **Open in Android Studio:**
+    * Launch Android Studio (Ladybug or later) and select File > Open, then navigate to the project folder.
+    
+3.  **Run or Build:** 
+    * Wait for the project to sync and download all necessary dependencies automatically.
+    
+4.  **Locate Output:**
+    * To build APK: Go to Build > Build Bundle(s) / APK(s) > Build APK(s).
 
 ---
 
