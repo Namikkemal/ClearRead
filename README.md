@@ -60,7 +60,7 @@ Or build from source (see below)
 - **Architecture:** MVVM + Repository Pattern
 - **Database:** Room (SQLite)
 - **Design:** Material 3 / Material You
-- **PDF Rendering:** PdfiumAndroid
+- **PDF Rendering:** AndroidPdfViewer (Pdfium) & PDFBox
 
 ---
 
@@ -96,7 +96,7 @@ cd clearread
 ```
 
 **Requirements:**
-- Android Studio Hedgehog or later
+- Android Studio Ladybug or later
 - JDK 17+
 - Android SDK 26+ (supports Android 8.0 Oreo and above)
 
