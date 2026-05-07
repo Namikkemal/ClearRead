@@ -1,4 +1,4 @@
-# ClearRead
+# ClearRead 📖
 
 <p align="center">
   <img src="/assets/ic_launcher.webp" alt="ClearRead Icon" width="120"/>
@@ -9,117 +9,84 @@
 </p>
 
 <p align="center">
-  Zero ads • Zero trackers • Fully offline
+  <em>"Because privacy shouldn't be a premium feature, and reading shouldn't be a struggle."</em>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/platform-Android-green.svg" alt="Platform"/>
-  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"/>
-  <img src="https://img.shields.io/github/v/release/Namikkemal/clearread" alt="Release"/>
+    <img src="https://img.shields.io/badge/platform-Android-green.svg" alt="Platform"/>
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"/>
+    <img src="https://img.shields.io/github/repo-size/Namikkemal/clearread.git" alt="Repo Size"/>
 </p>
 
 ---
 
-## 📱 Screenshots
+## ✨ Features & Value Pillars
+
+*   🛡️ **Complete Privacy:** Zero data collection, zero trackers, and no internet permission required. Your files stay 100% on your device.
+*   ⚡ **Performance First:** Optimized specifically for low-end devices (4GB RAM phones) with fast rendering and minimal resource usage.
+*   🎨 **Modern UX:** Features Material You dynamic theming and True AMOLED Dark Mode to save battery and reduce eye strain.
+*   🔍 **Core Reading Tools:** Includes intelligent searching, smart bookmarks, and a built-in file explorer for effortless PDF management.
+
+---
+
+## 📸 Screenshots
 
 <p align="center">
-  <img src="assets/home.jpg" width="250" />
-  <img src="assets/reader.jpg" width="250" />
-  <img src="assets/settings.jpg" width="250" />
+  <img src="assets/home.jpg" width="250" alt="Home Screen"/> |
+  <img src="assets/reader.jpg" width="250" alt="Reader View"/> |
+  <img src="assets/settings.jpg" width="250" alt="Settings"/>
 </p>
 
 ---
 
-## ✨ Features
-
-- **📖 Clean Reading Experience** — No ads, no clutter, just your documents
-- **🔍 Fast Search** — Find text across your entire PDF with highlighted results
-- **🔖 Smart Bookmarks** — Save your place and jump back anytime
-- **🎨 Material You** — Dynamic theming that adapts to your wallpaper
-- **🌙 Dark Mode + AMOLED** — True black for AMOLED screens to save battery
-- **⚡ Optimized for Low-End Devices** — Runs smoothly on 4GB RAM phones
-- **🔒 Complete Privacy** — No data collection, no internet permission, fully offline
-- **📂 Built-in File Explorer** — Browse and organize your PDFs easily
-
----
-
-## 📥 Download
-
-<a href="YOURPLAYSTORELINK">
-  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="80">
-</a>
-
-Or build from source (see below)
-
----
-
-## 🛠️ Tech Stack
-
-- **Language:** Kotlin
-- **UI:** Jetpack Compose
-- **Architecture:** MVVM + Repository Pattern
-- **Database:** Room (SQLite)
-- **Design:** Material 3 / Material You
-- **PDF Rendering:** AndroidPdfViewer (Pdfium) & PDFBox
-
----
-
-## 🤔 Why ClearRead?
+## 🤔 Why ClearRead? (My Commitment)
 
 I built ClearRead because I was tired of seeing my family struggle with bloated, ad-filled PDF readers on their budget phones. Every app I tried was either:
 
-- Loaded with intrusive ads
-- Asking for sketchy permissions
-- Slow and laggy on low-end devices
-- Tracking user behavior
+*   🚫 Loaded with intrusive ads and endless subscriptions.
+*   👻 Asking for sketchy permissions it never uses.
+*   🐢 Slow and laggy on low-end devices.
+*   📡 Tracking user behavior without transparency.
 
-So I decided to build what should have existed from the start: **a PDF reader that just works, respects your privacy, and runs fast on any device.**
+So, I decided to build what should have existed from the start: **a PDF reader that just works, respects your privacy, and runs fast on any device.** No ads. No trackers. Simple.
 
-No ads. No trackers.
+---
+
+## 📥 Download & Get Started
+
+<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="80">
+<p align=>Get the app today via Google Play or build it yourself for advanced use.</p>
+
+**For Developers:** See the detailed setup instructions in the "Build from Source" section below!
+
+---
+
+## 🔬 Technical Architecture & Philosophy
+
+ClearRead is built with modern Android development standards, focusing strictly on maintainability and performance. We prioritize reliability over complexity:
+
+*   **Language:** Kotlin
+*   **UI:** Jetpack Compose — Chosen for its declarative nature, which minimizes boilerplate and ensures fluid rendering even on budget devices.
+*   **Architecture:** MVVM + Repository Pattern — Ensures a Single Source of Truth (SSOT), keeping business logic isolated and testable.
+*   **Database:** Room (SQLite) — A secure, local-only database for all user data. **Your private settings never leave your phone.**
+*   **PDF Rendering:** AndroidPdfViewer (Pdfium) & PDFBox — Selected specifically for their industry-leading low memory footprint when handling large documents efficiently.
 
 ---
 
 ## 🔧 Build from Source
 
-```bash
+```bash()
 # Clone the repository
 git clone https://github.com/Namikkemal/clearread.git
 
-# Open in Android Studio
+# Open in Android Studio and navigate to the project folder
 cd clearread
-# File → Open → Select the project folder
 
-# Build the APK
-./gradlew assembleRelease
+# Run a clean build for release APK
+./gradlew assembleRelease 
 
-# APK will be at: app/build/outputs/apk/release/
-```
+# The finished APK will be at: app/build/outputs/apk/release/
 
-**Requirements:**
-- Android Studio Ladybug or later
-- JDK 17+
-- Android SDK 26+ (supports Android 8.0 Oreo and above)
-
----
-
-## 🌍 Privacy
-
-ClearRead collects **zero data**.
-
-- ❌ No analytics
-- ❌ No crash reporting
-- ❌ No ad networks
-- ❌ No internet permission
-- ✅ All files stay on your device
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-
-- 🐛 Report bugs via [Issues](https://github.com/Namikkemal/clearread/issues)
-- 💡 Suggest features
-- 🔧 Submit pull requests
 
 ---
 
