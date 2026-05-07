@@ -111,8 +111,6 @@ ClearRead collects **zero data**.
 - ❌ No ad networks
 - ❌ No internet permission
 - ✅ All files stay on your device
-
-
 ---
 
 ## 🤝 Contributing
