@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Book icon for ClearRead -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,30 L38,78 C38,79.1 38.9,80 40,80 L68,80 C69.1,80 70,79.1 70,78 L70,38 L62,30 L40,30 C38.9,30 38,30.9 38,30 Z" />
+    <path
+        android:fillColor="#BBDEFB"
+        android:pathData="M62,30 L62,38 L70,38 Z" />
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M44,50 L64,50 M44,56 L64,56 M44,62 L64,62 M44,68 L58,68"
+        android:strokeWidth="2"
+        android:strokeColor="#1565C0" />
+</vector>

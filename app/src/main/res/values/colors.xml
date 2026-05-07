@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="seed">#2196F3</color>
+    <color name="dark_surface">#121212</color>
+    <color name="dark_on_surface">#E0E0E0</color>
+</resources>
