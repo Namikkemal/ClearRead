@@ -1,7 +1,7 @@
 # ClearRead
 
 <p align="center">
-  <img src="/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" alt="ClearRead Icon" width="120"/>
+  <img src="/assets/ic_launcher.webp" alt="ClearRead Icon" width="120"/>
 </p>
 
 <p align="center">
