@@ -23,9 +23,9 @@
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="screenshots/home.jpg" width="250" />
-  <img src="screenshots/reader.jpg" width="250" />
-  <img src="screenshots/settings.jpg" width="250" />
+  <img src="assets/home.jpg" width="250" />
+  <img src="assets/reader.jpg" width="250" />
+  <img src="assets/settings.jpg" width="250" />
 </p>
 
 ---
