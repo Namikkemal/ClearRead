@@ -1,5 +1,5 @@
 [versions]
-agp = "9.2.0"
+agp = "9.2.1"
 kotlin = "2.2.10"
 ksp = "2.3.2"
 coreKtx = "1.13.1"
@@ -28,7 +28,6 @@ androidx-room-runtime = { group = "androidx.room", name = "room-runtime", versio
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 androidx-documentfile = { group = "androidx.documentfile", name = "documentfile", version.ref = "documentfile" }
-android-pdf-viewer = { group = "com.github.DImuthuUpe", name = "AndroidPdfViewer", version = "3.1.0-beta.1" }
 pdfbox-android = { group = "com.tom-roush", name = "pdfbox-android", version = "2.0.27.0" }
 
 [plugins]

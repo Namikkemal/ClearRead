@@ -10,8 +10,7 @@ import android.print.PageRange
 import android.print.PrintAttributes
 import android.print.PrintDocumentAdapter
 import android.print.PrintDocumentInfo
-import com.shockwave.pdfium.PdfDocument
-import com.shockwave.pdfium.PdfiumCore
+import com.clearread.ui.reader.PdfBookmark
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import com.tom_roush.pdfbox.text.PDFTextStripper
@@ -26,7 +25,6 @@ import java.io.FileOutputStream
 import java.io.IOException
 
 class PDFInteractionHelper(private val context: Context) {
-    private val pdfiumCore = PdfiumCore(context)
 
     init {
         try {
@@ -36,16 +34,10 @@ class PDFInteractionHelper(private val context: Context) {
         }
     }
 
-    suspend fun getTableOfContents(uri: Uri): List<PdfDocument.Bookmark> = withContext(Dispatchers.IO) {
-        try {
-            val pfd = context.contentResolver.openFileDescriptor(uri, "r") ?: return@withContext emptyList()
-            val doc = pdfiumCore.newDocument(pfd)
-            val toc = pdfiumCore.getTableOfContents(doc)
-            pdfiumCore.closeDocument(doc)
-            toc
-        } catch (e: Exception) {
-            emptyList()
-        }
+    suspend fun getTableOfContents(uri: Uri): List<PdfBookmark> = withContext(Dispatchers.IO) {
+        // TOC is currently not displayed in the UI. 
+        // This method can be implemented using PDFBox PDDocumentOutline when needed.
+        emptyList()
     }
 
     suspend fun extractPageText(uri: Uri, pageIndex: Int): String = withContext(Dispatchers.IO) {
@@ -310,3 +302,10 @@ class PdfPrintAdapter(
 }
 
 data class PdfSearchMatch(val pageIndex: Int, val rect: RectF)
+
+data class PdfBookmark(
+    val title: String,
+    val pageIdx: Long,
+    val children: List<PdfBookmark> = emptyList(),
+    val hasChildren: Boolean = children.isNotEmpty()
+)

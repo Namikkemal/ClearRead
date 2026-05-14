@@ -183,7 +183,7 @@ private fun showSystemBars(a: Activity) {
 private fun clampPan(offset: Float, viewportSize: Int, scale: Float): Float {
     if (scale <= 1.001f) return 0f
     val bound = (viewportSize * (scale - 1f)) / 2f
-    return offset.coerceIn(-bound, bound)
+    return if (bound <= 0f) 0f else offset.coerceIn(-bound, bound)
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -657,10 +657,19 @@ fun PdfReaderScreen(
                         derivedStateOf {
                             val total = uiState.pageCount
                             if (total > 1) {
+                                val isV = uiState.scrollDirection == PreferencesManager.SCROLL_VERTICAL
+                                val viewportDim = if (isV) vpH else vpW
                                 val index = listState.firstVisibleItemIndex
-                                val offset = listState.firstVisibleItemScrollOffset.toFloat()
+                                val scrollOffset = listState.firstVisibleItemScrollOffset.toFloat()
                                 val itemSize = listState.layoutInfo.visibleItemsInfo.firstOrNull()?.size ?: 1
-                                ((index + (offset / itemSize)) / (total - 1)).coerceIn(0f, 1f)
+                                val s = scaleAnim.value
+                                
+                                val totalPixels = total * itemSize
+                                val maxZoomedScroll = maxOf(1f, totalPixels * s - viewportDim)
+                                val panOffset = if (isV) offsetY else offsetX
+                                val currentZoomedScroll = (index * itemSize + scrollOffset) * s + (viewportDim / 2f * (s - 1f) - panOffset)
+                                
+                                (currentZoomedScroll / maxZoomedScroll).coerceIn(0f, 1f)
                             } else 0f
                         }
                     }
@@ -670,16 +679,28 @@ fun PdfReaderScreen(
                             VerticalFastScroller(ctx).apply {
                                 setOnScrollListener { progress ->
                                     scope.launch {
-                                        // "Gear" Precision: Map scroller progress to LazyList indices + offsets
                                         val totalItems = listState.layoutInfo.totalItemsCount
                                         if (totalItems > 0) {
-                                            val exactIndex = progress * (totalItems - 1)
-                                            val index = exactIndex.toInt()
-                                            // Calculate pixel offset within the page for "Window Scroll" feel
-                                            val itemHeight = listState.layoutInfo.visibleItemsInfo.firstOrNull()?.size ?: 0
-                                            val offset = ((exactIndex - index) * itemHeight).toInt()
+                                            val isV = uiState.scrollDirection == PreferencesManager.SCROLL_VERTICAL
+                                            val viewportDim = if (isV) vpH else vpW
+                                            val itemSize = listState.layoutInfo.visibleItemsInfo.firstOrNull()?.size ?: 1
                                             
-                                            listState.scrollToItem(index, offset)
+                                            val totalPixels = totalItems * itemSize
+                                            val maxScroll = maxOf(0, totalPixels - viewportDim)
+                                            val targetScroll = (progress * maxScroll).toInt()
+                                            
+                                            val index = (targetScroll / itemSize).coerceIn(0, totalItems - 1)
+                                            val scrollOffset = targetScroll % itemSize
+                                            listState.scrollToItem(index, scrollOffset)
+                                            
+                                            val s = scaleAnim.value
+                                            if (s > 1.001f) {
+                                                if (isV) {
+                                                    offsetY = (vpH / 2f * (s - 1f)) * (1f - 2f * progress)
+                                                } else {
+                                                    offsetX = (vpW / 2f * (s - 1f)) * (1f - 2f * progress)
+                                                }
+                                            }
                                         }
                                     }
                                 }

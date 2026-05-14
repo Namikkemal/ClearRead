@@ -1,4 +1,11 @@
 import java.util.Properties
+import java.io.FileInputStream
+
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("local.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
 
 plugins {
     alias(libs.plugins.android.application)
@@ -10,13 +17,13 @@ plugins {
 android {
 
     namespace = "com.clearread"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.clearread"
+        applicationId = "com.talha.clearread"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 1
+        targetSdk = 35
+        versionCode = 2
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -42,6 +49,24 @@ android {
 
     buildFeatures {
         compose = true
+    }
+    signingConfigs {
+        create("release") {
+            storeFile = file(keystoreProperties.getProperty("RELEASE_STORE_FILE") ?: "")
+            storePassword = keystoreProperties.getProperty("RELEASE_STORE_PASSWORD") ?: ""
+            keyAlias = keystoreProperties.getProperty("RELEASE_KEY_ALIAS") ?: ""
+            keyPassword = keystoreProperties.getProperty("RELEASE_KEY_PASSWORD") ?: ""
+        }
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
+            signingConfig = signingConfigs.getByName("release")
+        }
     }
 }
 
@@ -75,7 +100,6 @@ dependencies {
     implementation(libs.androidx.documentfile)
 
     // PDF Support
-    implementation(libs.android.pdf.viewer)
     implementation(libs.pdfbox.android)
 }
 

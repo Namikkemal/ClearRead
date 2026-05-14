@@ -28,7 +28,7 @@ import com.clearread.ui.reader.ReadingMode
 import com.clearread.ui.reader.ImportDialogData
 import com.clearread.ui.reader.ReaderUiState
 import com.clearread.ui.reader.PdfBitmapCache
-import com.shockwave.pdfium.PdfDocument
+import com.clearread.ui.reader.PdfBookmark
 
 /** The three visual modes the reader supports. */
 enum class ReadingMode { NORMAL, DARK, SEPIA }
@@ -52,7 +52,7 @@ data class ReaderUiState(
     val importDialogData: ImportDialogData? = null,
     val pageAspectRatios: List<Float> = emptyList(),
     val textContent: String? = null,
-    val toc: List<PdfDocument.Bookmark> = emptyList(),
+    val toc: List<PdfBookmark> = emptyList(),
     val isSearchSupported: Boolean = true,
     val isSearchOpen: Boolean = false,
     val searchQuery: String = "",
@@ -657,22 +657,24 @@ class ReaderViewModel(application: Application) : AndroidViewModel(application) 
         // 1. Trigger heavy rendering immediately (internally job-cancelled)
         renderPagesAround(page, screenWidth)
 
-        // 2. Debounce database and bookmark state updates (trailing debounce)
+        // 2. Check bookmark state immediately for responsive UI
+        viewModelScope.launch(Dispatchers.IO) {
+            val isBookmarked = database.bookmarkDao().isPageBookmarked(fileUri, page) > 0
+            withContext(Dispatchers.Main) {
+                val currentState = _uiState.value
+                if (currentState.currentPage == page) {
+                    _uiState.value = currentState.copy(isBookmarked = isBookmarked)
+                }
+            }
+        }
+
+        // 3. Debounce database read progress updates (trailing debounce)
         // This prevents excessive disk I/O during rapid scrolls/jumps.
         dbUpdateJob?.cancel()
         dbUpdateJob = viewModelScope.launch(Dispatchers.IO) {
             delay(300) // Stabilize for 300ms before committing to DB
             if (!isActive) return@launch
             
-            // Check bookmark state for new page
-            val isBookmarked = database.bookmarkDao().isPageBookmarked(fileUri, page) > 0
-            
-            withContext(Dispatchers.Main) {
-                if (isActive) {
-                    _uiState.value = _uiState.value.copy(isBookmarked = isBookmarked)
-                }
-            }
-
             // Save read progress
             recentFilesRepository.updateReadProgress(
                 fileUri, page, _uiState.value.pageCount
